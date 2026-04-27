@@ -1,0 +1,85 @@
+---
+interface Slide {
+    image: string;
+    text: string;
+}
+
+const { slides = [] }: { slides: Slide[] } = Astro.props;
+---
+
+<div class="carousel">
+    <div class="slides" id="slides">
+        {
+            slides.map((s) => (
+                <div class="slide" data-text={s.text}>
+                    <img src={s.image} alt="" />
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- single overlay -->
+    <div class="overlay" id="overlayText">
+        {slides[0]?.text}
+    </div>
+</div>
+
+<script>
+    let index = 0;
+    const slidesEl = document.getElementById("slides");
+    const textEl = document.getElementById("overlayText");
+
+    const total = slidesEl.children.length;
+
+    setInterval(() => {
+        index = (index + 1) % total;
+
+        slidesEl.style.transform = `translateX(-${index * 100}%)`;
+
+        const current = slidesEl.children[index];
+        textEl.textContent = current.dataset.text;
+    }, 3000);
+</script>
+
+<style>
+    .carousel {
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        min-height: 250px;
+        overflow: hidden;
+    }
+
+    .slides {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease;
+    }
+
+    .slide {
+        min-width: 100%;
+        height: 100%;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        color: white;
+        padding: 20px;
+
+        font-size: clamp(1.2rem, 3vw, 2.5rem);
+
+        background: rgba(0, 0, 0, 0.25);
+    }
+</style>
