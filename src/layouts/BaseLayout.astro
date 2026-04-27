@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+const { title = "Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+
+        <style>
+            :root {
+                --max-width: 1200px;
+            }
+
+            body {
+                margin: 0;
+                font-family: -apple-system, system-ui, sans-serif;
+                line-height: 1.6;
+            }
+
+            .container {
+                max-width: var(--max-width);
+                margin: 0 auto;
+                padding: 40px;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 60px;
+            }
+
+            .left {
+                position: sticky;
+                top: 40px;
+                height: fit-content;
+            }
+
+            h1 {
+                font-size: clamp(32px, 6vw, 64px);
+                margin: 0 0 20px;
+            }
+
+            p {
+                color: #555;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .section {
+                margin-bottom: 80px;
+            }
+
+            /* 📱 mobile */
+            @media (max-width: 768px) {
+                .grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .left {
+                    position: static;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <slot />
+        </div>
+    </body>
+</html>

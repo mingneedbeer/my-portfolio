@@ -1,17 +1,40 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Test Portfolio">
+  <div class="grid">
+
+    <!-- LEFT -->
+    <div class="left">
+      <h1>Szuyi Wang</h1>
+      <p>
+        Designer / Creative Developer<br />
+        Minimal portfolio layout test
+      </p>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <Section
+        title="Project One"
+        image="https://picsum.photos/800/500?1"
+        description="Clean layout with strong spacing."
+      />
+
+      <Section
+        title="Project Two"
+        image="https://picsum.photos/800/500?2"
+        description="Responsive grid-based design."
+      />
+
+      <Section
+        title="Project Three"
+        image="https://picsum.photos/800/500?3"
+        description="Typography-driven UI."
+      />
+    </div>
+
+  </div>
+</BaseLayout>
