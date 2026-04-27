@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import "@fontsource/noto-sans-tc/400.css";
+import "@fontsource/noto-sans-tc/700.css";
 const { title = "Portfolio" } = Astro.props;
 ---
 
@@ -19,6 +21,10 @@ const { title = "Portfolio" } = Astro.props;
                 margin: 0;
                 font-family: -apple-system, system-ui, sans-serif;
                 line-height: 1.6;
+            }
+
+            p {
+                font-family: "sans", sans-serif;
             }
 
             .container {
@@ -73,6 +79,7 @@ const { title = "Portfolio" } = Astro.props;
 
     <body>
         <div class="container">
+            <>中文 Chinese</>
             <slot />
         </div>
     </body>
