@@ -1,0 +1,36 @@
+---
+const images = [
+    "/images/IMG_1703.jpg",
+    "/images/IMG_2648.jpg",
+    "/images/IMG_2739.jpg",
+    "/images/IMG_3835.jpg",
+];
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Responsive Image Grid</title>
+    </head>
+
+    <body class="bg-neutral-950 text-white min-h-screen">
+        <main class="max-w-7xl mx-auto px-6 py-10">
+            <h1 class="text-4xl font-bold mb-8">
+                Responsive Tailwind Image Grid
+            </h1>
+
+            <div class="grid grid-cols-3 gap-4 p-4">
+                {
+                    images.map((img) => (
+                        <img
+                            src={img}
+                            alt="image"
+                            class="w-[300px] h-[200px] object-cover rounded-lg"
+                        />
+                    ))
+                }
+            </div>
+        </main>
+    </body>
+</html>
